@@ -45,7 +45,7 @@
                 <!-- Add other data fields as needed -->
             </tbody>
         </table>
-        <a href="<?php echo route('manageApplications'); ?>" class="btn btn-secondary">My Events</a>
+        <a href="<?php echo route('editCompanyProfile'); ?>" class="btn btn-secondary">Edit Profile</a>
         <a href="<?php echo route(''); ?>" class="btn btn-light">Home Page</a>
     </div>
     <div class="mt-auto"><?php include('views/footer.view.php'); ?></div>

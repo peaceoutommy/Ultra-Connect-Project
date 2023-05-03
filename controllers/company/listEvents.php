@@ -14,4 +14,4 @@ $applications = $queryBuilder->getCompanyEventsWithApplications($company_id);
 // Pass the $events variable to the view
 extract(['events' => $events]);
 
-require 'views/company/manage.application.view.php';
+require 'views/company/listEvents.view.php';

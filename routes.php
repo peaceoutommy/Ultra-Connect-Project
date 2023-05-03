@@ -81,8 +81,8 @@ $router->post('applyEvent', function () {
 });
 
 // COMPANY my events & manage application
-$router->get('manageApplications', function () {
-    require 'controllers/company/manageApplications.php';
+$router->get('listEvents', function () {
+    require 'controllers/company/listEvents.php';
 });
 
 // COMPANY update application state
@@ -127,4 +127,27 @@ $router->get('editFreelancerProfile', function () {
 
 $router->post('updateFreelancerProfile', function () {
     require 'controllers/freelancer/updateProfile.php';
+});
+
+// COMPANY profile edit
+$router->get('editCompanyProfile', function () {
+    require 'controllers/company/editProfile.php';
+});
+
+$router->post('updateCompanyProfile', function () {
+    require 'controllers/company/updateProfile.php';
+});
+
+// COMPANY event edit
+$router->get('editEvent/(\d+)', function ($id) {
+    require 'controllers/company/editEvent.php';
+});
+
+$router->post('updateEvent', function () {
+    require 'controllers/company/updateEvent.php';
+});
+
+// COMPANY delete event
+$router->post('deleteEvent/(\d+)', function ($id) {
+    require 'controllers/company/deleteEvent.php';
 });
