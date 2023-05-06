@@ -10,7 +10,7 @@
 </head>
 
 <body class="d-flex flex-column min-vh-100">
-  <?php include('navbar.view.php'); ?>
+  <?php include('navbar.view.php');?>
 
   <div class="content d-flex justify-content-center align-items-center">
     <h1>This is the home page</h1>

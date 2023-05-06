@@ -12,23 +12,35 @@
 <body class="d-flex flex-column min-vh-100">
     <?php include 'views/navbar.view.php' ?>
     <div class="container">
+
         <ul class="list-group mt-4">
             <li class="list-group-item">
-                <h3><?php echo $event->Name ?></h3>
-                <p><b>Description: </b><?php echo $event->Description ?></p>
-                <p><b>Company name: </b><?php echo $event->Company->Name ?></p>
-                <p><b>Date: </b><?php echo $event->Date ?></p>
-                <p><b>State: </b><?php echo $event->State ?></p>
-                <p><b>Spots available: </b><?php echo $event->Spots ?></p>
-                <p><b>Sector: </b><?php echo $event->Sector ?></p>
+                <div class="row">
+                    <div class="col-6">
+                        <h3><?php echo $event->Name ?></h3>
+                        <p><b>Description: </b><?php echo $event->Description ?></p>
+                        <p><b>Company name: </b><?php echo $event->Company->Name ?></p>
+                        <p><b>Date: </b><?php echo $event->Date ?></p>
+                        <p><b>State: </b><?php echo $event->State ?></p>
+                        <p><b>Spots available: </b><?php echo $event->Spots ?></p>
+                        <p><b>Sector: </b><?php echo $event->Sector ?></p>
+                    </div>
+                    <?php if (isset($_SESSION["companyId"])) { ?>
+                        <div class="col-6">
+                            <h3 style="visibility:hidden;">just a spacer</h3>
+                            <p><a href="<?php echo route('applicationPending/' . $event->Id); ?>">Pending Applications</a></p>
+                            <p><a href="<?php echo route('applicationAccepted/' . $event->Id); ?>">Accepted Applications</a></p>
+                            <p><a href="<?php echo route('applicationRejected/' . $event->Id); ?>">Rejected Applications</a></p>
+                        </div>
+                    <?php } ?>
+                </div>
             </li>
         </ul>
+
         <br>
-        <!-- DISPLAY EDIT EVENT BUTTON TO COMPANIES ONLY -->
+        <!-- DISPLAY EDIT FUNCTIONALITIES TO COMPANIES ONLY -->
         <?php if (isset($_SESSION["companyId"])) { ?>
             <a href="<?php echo route('editEvent/' . $event->Id); ?>" class="btn btn-secondary">Edit Event</a>
-        <?php } ?>
-        <?php if (isset($_SESSION["companyId"])) { ?>
             <a href="<?php echo route(''); ?>" class="btn btn-light">Home Page</a>
         <?php } ?>
         <!-- IF ITS A FREELANCER THE BUTTON COLOR IS GRAY INSTEAD OF LIGHT GRAY -->

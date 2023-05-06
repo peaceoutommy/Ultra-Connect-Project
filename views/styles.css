@@ -1,32 +1,53 @@
-.flexMain {
-	display: flex;
-	align-items: center
-}
-
-.flex1 {
-	flex: 1
-}
-
-.flex2 {
-	flex: 2
-}
-
-.flex3 {
-	flex: 3
-}
-
-body{
+/* General */
+body {
 	overflow-x: hidden;
 }
 
+.noMargin {
+	padding: 0;
+	margin: 0;
+}
+
+/* Flex */
+.flexMain {
+	display: flex;
+	align-items: center;
+}
+
+.flex1 {
+	flex: 1;
+}
+
+.flex2 {
+	flex: 2;
+}
+
+.flex3 {
+	flex: 3;
+}
+
+/* Header */
 .headDiv {
 	background-color: #1D1D1D;
+}
+
+#siteBrand {
+	font-family: impact;
+	letter-spacing: -1px;
+	font-size: 32px;
+	color: #252525;
+	line-height: 1em;
 }
 
 .content {
 	height: 70vh;
 }
 
+.buttonMenu {
+	flex: 3;
+}
+
+/* Buttons */
 button.siteLink {
 	margin-left: -5px;
 	border: none;
@@ -35,9 +56,23 @@ button.siteLink {
 	min-width: 115px;
 }
 
+.textButton {
+	background: none;
+	border: none;
+	margin: 0;
+	padding: 0;
+	cursor: pointer;
+	color: rgb(24, 24, 24);
+}
+
+.whiteLink,
+.grayLink,
+.blackLink {
+	transition: all 300ms linear;
+}
+
 .whiteLink {
 	background: #f3f3f3;
-	transition: all 300ms linear;
 }
 
 .whiteLink:hover {
@@ -48,23 +83,21 @@ button.siteLink {
 .grayLink {
 	background: #b5b5b5;
 	color: rgb(0, 0, 0);
-	transition: all 300ms linear;
 }
 
 .grayLink:hover {
 	color: #ffffff;
-	background: #707070
+	background: #707070;
 }
 
 .blackLink {
 	color: #fff;
 	background: #1d1d1d;
-	transition: all 300ms linear;
 }
 
 .blackLink:hover {
 	color: #000;
-	background: #ededed
+	background: #ededed;
 }
 
 #siteBrand {
@@ -290,9 +323,9 @@ select.noStyle {
 	color: rgb(46, 46, 46);
 	text-decoration: none;
 	position: relative;
-  }
-  
-  .linkRedirect::before {
+}
+
+.linkRedirect::before {
 	content: "";
 	position: absolute;
 	bottom: -2px;
@@ -303,11 +336,11 @@ select.noStyle {
 	transform: scaleX(0);
 	transform-origin: left;
 	transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  }
-  
-  .linkRedirect:hover::before {
+}
+
+.linkRedirect:hover::before {
 	transform: scaleX(1);
-  }
+}
 
 .textButton {
 	background: none;
@@ -318,6 +351,44 @@ select.noStyle {
 	color: rgb(24, 24, 24);
 }
 
-.titlePadding{
+.titlePadding {
 	padding-left: 15px;
+}
+
+.noMargin {
+	padding: 0;
+	margin: 0;
+}
+
+.overlay {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: transparent;
+	transition: all 250ms linear;
+}
+
+.overlay:hover {
+	color: #000;
+	background-color: rgba(255, 255, 255, 0.516);
+	transition: all 500ms linear;
+}
+
+.pdf-container {
+	cursor: pointer;
+	position: relative;
+	height: 205px;
+}
+
+.acceptedBtn{
+	background-color: rgb(105, 186, 118);
+}
+
+.rejectedBtn{
+	background-color: rgb(198, 106, 106);
 }

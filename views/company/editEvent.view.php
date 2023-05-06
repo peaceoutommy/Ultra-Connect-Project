@@ -15,7 +15,7 @@
 <body class="d-flex flex-column min-vh-100">
     <?php include 'views/navbar.view.php' ?>
     <div class="container">
-        <h1 class="my-4">Freelancer Profile</h1>
+        <h1 class="my-4">Edit Event</h1>
 
         <form action="<?php echo route('updateEvent'); ?>" method="POST">
             <div class="form-group">
@@ -46,8 +46,9 @@
                 <input type="text" class="form-control" name="Sector" value="<?php echo $event->Sector; ?>" required>
             </div>
             <br>
-            <button type="submit" name="submit" class="btn btn-secondary">Update Event</button>
-            <a href="<?php echo route(''); ?>" class="btn btn-light">Home Page</a>
+            <div>
+                <button type="submit" name="submit" class="btn btn-secondary">Update Event</button>
+                <a href="<?php echo route(''); ?>" class="btn btn-light">Home Page</a>
         </form>
 
         <!-- DELETE EVENT  -->
@@ -57,8 +58,8 @@
                 <button type="submit" class="btn btn-danger">Delete Event</button>
             </form>
         <?php } ?>
-        </table>
-
+        <!-- DIV BUGADA MAS FUNCIONA -->
+    </div>
     </div>
     <div class="mt-auto"><?php include('views/footer.view.php'); ?></div>
 </body>

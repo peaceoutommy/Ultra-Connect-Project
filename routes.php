@@ -151,3 +151,19 @@ $router->post('updateEvent', function () {
 $router->post('deleteEvent/(\d+)', function ($id) {
     require 'controllers/company/deleteEvent.php';
 });
+
+// COMPANY view applications
+$router->get('applicationPending/(\d+)', function ($id) {
+    // $GLOBALS['event_id'] = $id;
+    require 'controllers/company/applicationPending.php';
+});
+
+$router->get('applicationAccepted/(\d+)', function ($id) {
+    // $GLOBALS['event_id'] = $id;
+    require 'controllers/company/applicationAccepted.php';
+});
+
+$router->get('applicationRejected/(\d+)', function ($id) {
+    // $GLOBALS['event_id'] = $id;
+    require 'controllers/company/applicationRejected.php';
+});

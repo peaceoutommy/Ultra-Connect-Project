@@ -40,9 +40,6 @@
                     <th scope="row">Address:</th>
                     <td><?php echo $company->Address; ?></td>
                 </tr>
-
-
-                <!-- Add other data fields as needed -->
             </tbody>
         </table>
         <a href="<?php echo route('editCompanyProfile'); ?>" class="btn btn-secondary">Edit Profile</a>

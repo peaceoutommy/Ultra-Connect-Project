@@ -96,8 +96,8 @@
                 <?php if (!isset($_SESSION["freelancerId"]) && !isset($_SESSION["companyId"])) { ?>
                     <div>
                         <a href="<?php echo route(''); ?>" class="nav-menu-item"><i class="fas fa-home me-3"></i>Home</a>
-                        <a href="<?php echo route('generalLogin'); ?>" class="buttonReg nav-menu-item d-none"><i class="fas fa-building me-3"></i>Register</a>
-                        <a href="<?php echo route('generalRegister'); ?>" class="buttonReg nav-menu-item d-none"><i class="fas fa-building me-3"></i>Login</a>
+                        <a href="<?php echo route('generalRegister'); ?>" class="buttonReg nav-menu-item d-none"><i class="fas fa-building me-3"></i>Register</a>
+                        <a href="<?php echo route('generalLogin'); ?>" class="buttonReg nav-menu-item d-none"><i class="fas fa-building me-3"></i>Login</a>
                         <a href="<?php echo route('Info'); ?>" class="nav-menu-item"><i class="fas fa-home me-3"></i>Informations</a>
                         <a href="" class="nav-menu-item" id="closeButton"><i class="fas fa-building me-3"></i>Close</a>
                     </div>

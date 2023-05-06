@@ -17,7 +17,7 @@
     <div class="container">
         <h1 class="my-4">Freelancer Profile</h1>
 
-        <form action="<?php echo route('updateFreelancerProfile'); ?>" method="POST">
+        <form action="<?php echo route('updateFreelancerProfile'); ?>" method="POST" enctype="multipart/form-data">
             <div class="form-group">
                 <label for="name">Name:</label>
                 <input type="text" class="form-control" name="Name" value="<?php echo $freelancer->Name; ?>" required>
@@ -41,6 +41,20 @@
             <div class="form-group">
                 <label for="nif">NIF:</label>
                 <input type="text" class="form-control" name="NIF" value="<?php echo $freelancer->NIF; ?>" required>
+            </div>
+
+            <div class="form-group">
+                <label for="CV">CV:</label>
+                <input type="file" class="form-control" name="CV" accept="application/pdf">
+            </div>
+            
+            <div class="form-group">
+                <label for="NewPassword">New password:</label>
+                <input type="password" class="form-control" name="NewPassword" placeholder="***********" required>
+            </div>
+            <div class="form-group">
+                <label for="NewPasswordRepeat">Repeat password:</label>
+                <input type="password" class="form-control" name="NewPasswordRepeat" placeholder="***********" required>
             </div>
             <br>
             <button type="submit" name="submit" class="btn btn-secondary">Update Profile</button>

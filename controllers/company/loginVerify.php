@@ -22,6 +22,21 @@ if (isset($_POST["submit"])) {
     }
 
     $queryBuilder->getCompany($email, $password);
+    $loginResult = $queryBuilder->getCompany($email, $password);
 
-    redirect('');
+    if ($loginResult === 'wrongpassword') {
+        $_SESSION['passwordError'] = "The password is incorrect.";
+        redirect('companyLogin');
+        exit();
+    }
+
+    if ($loginResult === 'usernotfound') {
+        $_SESSION['emailError'] = "User not found.";
+        redirect('companyLogin');
+        exit();
+    }
+
+    if ($loginResult === 'success') {
+        redirect('');
+    }
 }

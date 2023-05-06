@@ -64,7 +64,6 @@ class QueryBuilder
 
         if (!$stmt->execute(array($email))) {
             $stmt = null;
-            header("location: ../index.php?error=stmtfailed");
             exit();
         }
 
@@ -72,7 +71,7 @@ class QueryBuilder
 
         if (count($passHashed) == 0) {
             $stmt = null;
-            header("location: ../index.php?error=usernotfound");
+            return 'usernotfound';
             exit();
         }
 
@@ -80,27 +79,27 @@ class QueryBuilder
 
         if ($checkPass == false) {
             $stmt = null;
-            header("location: ../index.php?error=wrongpassword");
+            return 'wrongpassword';
             exit();
         } elseif ($checkPass == true) {
             $stmt = $this->pdo->prepare('SELECT * FROM Freelancer WHERE Email = ? AND Password = ?;');
 
             if (!$stmt->execute(array($email, $passHashed[0]['Password']))) {
                 $stmt = null;
-                header("location: ../index.php?error=stmtfailed");
                 exit();
             }
 
             $freelancer = $stmt->fetchAll(PDO::FETCH_ASSOC);
             if (count($freelancer) == 0) {
                 $stmt = null;
-                header("location: ../index.php?error=usernotfound");
+                return 'usernotfound';
                 exit();
             }
 
             $_SESSION["freelancerId"] = $freelancer[0]["Id"];
             $_SESSION["freelancerUsername"] = $freelancer[0]["Username"];
-
+            // EVERYTHING WENT OK, RETURN SUCCESS
+            return 'success';
             $stmt = null;
         }
     }
@@ -113,7 +112,6 @@ class QueryBuilder
 
         if (!$stmt->execute(array($email))) {
             $stmt = null;
-            header("location: ../index.php?error=stmtfailed");
             exit();
         }
 
@@ -121,7 +119,7 @@ class QueryBuilder
 
         if (count($passHashed) == 0) {
             $stmt = null;
-            header("location: ../index.php?error=usernotfound");
+            return 'usernotfound';
             exit();
         }
 
@@ -129,31 +127,30 @@ class QueryBuilder
 
         if ($checkPass == false) {
             $stmt = null;
-            header("location: ../index.php?error=wrongpassword");
+            return 'wrongpassword';
             exit();
         } elseif ($checkPass == true) {
             $stmt = $this->pdo->prepare('SELECT * FROM Company WHERE Email = ? AND Password = ?;');
 
             if (!$stmt->execute(array($email, $passHashed[0]['Password']))) {
                 $stmt = null;
-                header("location: ../index.php?error=stmtfailed");
                 exit();
             }
 
             $company = $stmt->fetchAll(PDO::FETCH_ASSOC);
             if (count($company) == 0) {
                 $stmt = null;
-                header("location: ../index.php?error=usernotfound");
+                return 'usernotfound';
                 exit();
             }
 
             $_SESSION["companyId"] = $company[0]["Id"];
             $_SESSION["companyName"] = $company[0]["Name"];
-
+            // EVERYTHING WENT OK, RETURN SUCCESS
+            return 'success';
             $stmt = null;
         }
     }
-
     public function getApplicationsByEventIdWithFreelancerName($event_id, $class = "StdClass")
     {
         $statement = $this->pdo->prepare("
@@ -167,6 +164,7 @@ class QueryBuilder
 
         return $statement->fetchAll(PDO::FETCH_CLASS, $class);
     }
+
 
     public function getAcceptedApplicationsCount($event_id)
     {
@@ -255,10 +253,25 @@ class QueryBuilder
         $stmt->execute(['event_id' => $event_id]);
     }
 
-    public function getAcceptedEventsForFreelancer($freelancer_id)
+    // public function getAcceptedEventsForFreelancer($freelancer_id)
+    // {
+    //     $stmt = $this->pdo->prepare("SELECT e.* FROM Event e JOIN Application a ON e.Id = a.Id_Event WHERE a.Id_Freelancer = :freelancer_id AND a.State = 'accepted'");
+    //     $stmt->execute(['freelancer_id' => $freelancer_id]);
+    //     return $stmt->fetchAll(PDO::FETCH_CLASS, 'App\Model\Event');
+    // }
+
+    public function getApplicationsByEventIdAndState($event_id, $state, $class = "StdClass")
     {
-        $stmt = $this->pdo->prepare("SELECT e.* FROM Event e JOIN Application a ON e.Id = a.Id_Event WHERE a.Id_Freelancer = :freelancer_id AND a.State = 'accepted'");
-        $stmt->execute(['freelancer_id' => $freelancer_id]);
-        return $stmt->fetchAll(PDO::FETCH_CLASS, 'App\Model\Event');
+        $statement = $this->pdo->prepare("
+        SELECT a.*, f.Name as Freelancer_Name, f.Username as Freelancer_Username, f.Email as Freelancer_Email
+        FROM `Application` a
+        JOIN Freelancer f ON a.Id_Freelancer = f.Id
+        WHERE a.Id_Event = :event_id AND a.State = :state
+    ");
+        $statement->bindParam(':event_id', $event_id);
+        $statement->bindParam(':state', $state);
+        $statement->execute();
+
+        return $statement->fetchAll(PDO::FETCH_CLASS, $class);
     }
 }

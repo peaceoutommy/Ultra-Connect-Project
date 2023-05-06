@@ -13,7 +13,7 @@
     <?php include 'views/navbar.view.php' ?>
 
     <div class="container">
-        <h1 class="titlePadding"><?php echo ($_SESSION['companyName']) ?> Events</h1>
+        <h1 class="titlePadding mt-4"><?php echo ($_SESSION['companyName']) ?> Events</h1>
         <?php foreach ($events as $event) : ?>
             <div class="card mt-4">
                 <div class="card-header">
@@ -38,12 +38,10 @@
                                         <!-- GO TO FREELANCER PROFILE -->
                                         <form action="<?php echo route('seeFreelancer'); ?>" method="post" class="freelancer-link-form">
                                             <input type="hidden" name="freelancer_id" value="<?php echo $application->Id_Freelancer; ?>">
-                                            <button type="submit" class="btn btn-link text-start">
-                                                <p><b>Freelancer Name: </b><?php echo $application->Freelancer_Name; ?></p>
+                                            <button type="submit" class="btn btn-link">
+                                                <p><b>Freelancer: </b><?php echo $application->Freelancer_Name; ?></p>
                                             </button>
                                         </form>
-                                        <p><b>Freelancer ID: </b><?php echo $application->Id_Freelancer; ?></p>
-
                                         <form action="<?php echo route('updateApplicationState'); ?>" method="post">
                                             <input type="hidden" name="application_id" value="<?php echo $application->Id; ?>">
                                             <button type="submit" name="state" value="Accepted" class="btn btn-success">Accept</button>
@@ -55,7 +53,7 @@
                         </div>
                     </div>
                     <div class="dropdown d-inline">
-                        <button class="btn btn-light dropdown-toggle" type="button" id="dropdownAccepted" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <button class="btn btn-light dropdown-toggle acceptedBtn" type="button" id="dropdownAccepted" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Accepted Applications
                         </button>
                         <div class="dropdown-menu" aria-labelledby="dropdownAccepted" style="max-height: 200px; overflow-y: auto;">
@@ -65,11 +63,10 @@
                                         <!-- GO TO FREELANCER PROFILE -->
                                         <form action="<?php echo route('seeFreelancer'); ?>" method="post" class="freelancer-link-form">
                                             <input type="hidden" name="freelancer_id" value="<?php echo $application->Id_Freelancer; ?>">
-                                            <button type="submit" class="btn btn-link text-start">
-                                                <p><b>Freelancer Name: </b><?php echo $application->Freelancer_Name; ?></p>
+                                            <button type="submit" class="btn btn-link">
+                                                <p><b>Freelancer: </b><?php echo $application->Freelancer_Name; ?></p>
                                             </button>
                                         </form>
-                                        <p><b>Freelancer ID: </b><?php echo $application->Id_Freelancer; ?></p>
                                         <p><b>State: </b><?php echo $application->State; ?></p>
                                         <hr>
                                     </a>
@@ -79,7 +76,7 @@
                     </div>
 
                     <div class="dropdown d-inline">
-                        <button class="btn btn-light dropdown-toggle" type="button" id="dropdownRejected" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <button class="btn btn-light dropdown-toggle rejectedBtn" type="button" id="dropdownRejected" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Rejected Applications
                         </button>
                         <div class="dropdown-menu" aria-labelledby="dropdownRejected" style="max-height: 200px; overflow-y: auto;">
@@ -89,11 +86,10 @@
                                         <!-- GO TO FREELANCER PROFILE -->
                                         <form action="<?php echo route('seeFreelancer'); ?>" method="post" class="freelancer-link-form">
                                             <input type="hidden" name="freelancer_id" value="<?php echo $application->Id_Freelancer; ?>">
-                                            <button type="submit" class="btn btn-link text-start">
-                                                <p><b>Freelancer Name: </b><?php echo $application->Freelancer_Name; ?></p>
+                                            <button type="submit" class="btn btn-link">
+                                                <p><b>Freelancer: </b><?php echo $application->Freelancer_Name; ?></p>
                                             </button>
                                         </form>
-                                        <p><b>Freelancer ID: </b><?php echo $application->Id_Freelancer; ?></p>
                                         <p><b>State: </b><?php echo $application->State; ?></p>
                                         <hr>
                                     </a>
@@ -101,10 +97,6 @@
                             <?php endforeach; ?>
                         </div>
                     </div>
-
-
-
-
                 </div>
             </div>
         <?php endforeach; ?>
@@ -113,7 +105,6 @@
     <?php include('views/footer.view.php'); ?>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
     <script src="<?php echo route('views/javascript.js'); ?>"></script>
 </body>
 

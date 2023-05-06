@@ -17,12 +17,20 @@
 
   <div class="container">
     <form action="<?php echo route('freelancerLogin'); ?>" method="post">
+      <!-- ERROR MESSAGES -->
+      <span class="text-danger" id="passwordError"><?php if (isset($_SESSION['passwordError'])) echo $_SESSION['passwordError']; ?></span>
+      <span class="text-danger" id="emailError"><?php if (isset($_SESSION['emailError'])) echo $_SESSION['emailError']; ?></span>
+      <!-- REMOVE ERROR MESSAGES -->
+      <?php unset($_SESSION['passwordError']);
+      unset($_SESSION['emailError']); ?>
+      
       <input type="hidden" name="type" value="login">
-
       <br><input type="text" name="Email" placeholder="Email..." class="form-control" required><br>
       <input type="password" name="Password" placeholder="Password..." class="form-control" required><br>
 
+
       <button type="submit" name="submit" class="btn btn-secondary">Log In</button>
+      <?php if (isset($_SESSION['passwordError'])) unset($_SESSION['passwordError']); ?>
     </form>
   </div>
   <div class="mt-auto"><?php include('views/footer.view.php'); ?></div>

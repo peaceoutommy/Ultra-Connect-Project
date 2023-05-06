@@ -17,6 +17,13 @@
 
   <div class="container">
     <form action="<?php echo route('companyLogin'); ?>" method="post">
+      <!-- ERROR MESSAGES -->
+      <span class="text-danger" id="passwordError"><?php if (isset($_SESSION['passwordError'])) echo $_SESSION['passwordError']; ?></span>
+      <span class="text-danger" id="emailError"><?php if (isset($_SESSION['emailError'])) echo $_SESSION['emailError']; ?></span>
+      <!-- REMOVE ERROR MESSAGES -->
+      <?php unset($_SESSION['passwordError']);
+      unset($_SESSION['emailError']); ?>
+      
       <input type="hidden" name="type" value="login">
 
       <br><input type="text" name="Email" placeholder="Email..." class="form-control" required><br>

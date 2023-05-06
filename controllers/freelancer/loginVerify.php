@@ -1,4 +1,5 @@
 <?php
+
 use App\Model\Freelancer;
 use App\Database\Connection;
 use App\Database\QueryBuilder;
@@ -16,13 +17,26 @@ if (isset($_POST["submit"])) {
     $password = $_POST["Password"];
 
     /* Running error handlers and user signup */
-    if(empty($email) || empty($password)){
-        // header("location: ../index.php?error=emptyinput");
+    if (empty($email) || empty($password)) {
         exit();
     }
 
     $queryBuilder->getFreelancer($email, $password);
+    $loginResult = $queryBuilder->getFreelancer($email, $password);
 
-    /* Going to back to front page */
-    redirect('');
+    if ($loginResult === 'wrongpassword') {
+        $_SESSION['passwordError'] = "The password is incorrect.";
+        redirect('freelancerLogin');
+        exit();
+    }
+
+    if ($loginResult === 'usernotfound') {
+        $_SESSION['emailError'] = "User not found.";
+        redirect('freelancerLogin');
+        exit();
+    }
+
+    if ($loginResult === 'success') {
+        redirect('');
+    }
 }
