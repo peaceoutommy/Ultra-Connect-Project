@@ -17,9 +17,25 @@
 <body class="d-flex flex-column min-vh-100">
     <?php include('navbar.view.php'); ?>
     <div class="container">
-        <div class="generalLoginRegister">
-            <a href="<?php echo route('freelancerLogin'); ?>"><button class="generalButtons">FREELANCER</button></a>
-            <a href="<?php echo route('companyLogin'); ?>"><button class="generalButtons">COMPANY</button></a>
+        <div class="row mt-4">
+            <div class="col-12">
+                <h2 class="textSlide"><b>Who are you?</b></h2>
+            </div>
+        </div>
+        <div class="row mt-5">
+            <div class="col-4">
+                <a href="<?php echo route('freelancerLogin'); ?>" class="textCardHref userCard">
+                    <span class="textCard">FREELANCER</span>
+                    <span class="textCardInvis">Login</span>
+                </a>
+            </div>
+            <div class="col-4"></div>
+            <div class="col-4">
+                <a href="<?php echo route('companyLogin'); ?>" class="textCardHref userCard">
+                    <span class="textCard">COMPANY</span>
+                    <span class="textCardInvis">Login</span>
+                </a>
+            </div>
         </div>
     </div>
     <div class="mt-auto"><?php include('footer.view.php'); ?></div>

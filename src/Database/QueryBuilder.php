@@ -57,6 +57,32 @@ class QueryBuilder
         return $stmt->rowCount() == 1;
     }
 
+    // Register Freelancer Verification
+    public function getFreelancerByAllFields($email, $username, $phone, $nif)
+    {
+        $sql = "SELECT * FROM Freelancer WHERE Email = :email OR Username = :username OR Phone = :phone OR NIF = :nif";
+        $statement = $this->pdo->prepare($sql);
+        $statement->bindParam(':email', $email);
+        $statement->bindParam(':username', $username);
+        $statement->bindParam(':phone', $phone);
+        $statement->bindParam(':nif', $nif);
+        $statement->execute();
+        return $statement->fetchAll(PDO::FETCH_OBJ);
+    }
+
+        // Register Company Verification
+        public function getCompanyByAllFields($email, $username, $phone, $nif)
+        {
+            $sql = "SELECT * FROM Company WHERE Email = :email OR Name = :username OR Phone = :phone OR NIF = :nif";
+            $statement = $this->pdo->prepare($sql);
+            $statement->bindParam(':email', $email);
+            $statement->bindParam(':username', $username);
+            $statement->bindParam(':phone', $phone);
+            $statement->bindParam(':nif', $nif);
+            $statement->execute();
+            return $statement->fetchAll(PDO::FETCH_OBJ);
+        }
+
     /* Login Freelancer */
     public function getFreelancer($email, $password)
     {
@@ -104,7 +130,6 @@ class QueryBuilder
         }
     }
 
-
     /* Login Company */
     public function getCompany($email, $password)
     {
@@ -151,6 +176,7 @@ class QueryBuilder
             $stmt = null;
         }
     }
+
     public function getApplicationsByEventIdWithFreelancerName($event_id, $class = "StdClass")
     {
         $statement = $this->pdo->prepare("
@@ -164,7 +190,6 @@ class QueryBuilder
 
         return $statement->fetchAll(PDO::FETCH_CLASS, $class);
     }
-
 
     public function getAcceptedApplicationsCount($event_id)
     {
@@ -252,13 +277,6 @@ class QueryBuilder
         $stmt = $this->pdo->prepare("UPDATE Event SET Spots = Spots - 1 WHERE Id = :event_id");
         $stmt->execute(['event_id' => $event_id]);
     }
-
-    // public function getAcceptedEventsForFreelancer($freelancer_id)
-    // {
-    //     $stmt = $this->pdo->prepare("SELECT e.* FROM Event e JOIN Application a ON e.Id = a.Id_Event WHERE a.Id_Freelancer = :freelancer_id AND a.State = 'accepted'");
-    //     $stmt->execute(['freelancer_id' => $freelancer_id]);
-    //     return $stmt->fetchAll(PDO::FETCH_CLASS, 'App\Model\Event');
-    // }
 
     public function getApplicationsByEventIdAndState($event_id, $state, $class = "StdClass")
     {

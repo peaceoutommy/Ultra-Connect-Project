@@ -15,26 +15,8 @@
         <div class="p-3 text-white headDiv">
             <div class="flexMain">
                 <div class="flex2 text-center">
+                    <span class="textLogo">ULTRA CONNECT</span>
 
-                    <!-- USER NOT LOGGED IN -->
-                    <?php if (!isset($_SESSION["freelancerId"]) && (!isset($_SESSION["companyId"]))) { ?>
-                        <strong>Welcome Guest</strong>
-                    <?php
-                    }
-                    if (isset($_SESSION["freelancerId"])) { ?>
-
-                        <!-- FREELANCER LOGGED IN -->
-                        <strong> Welcome
-                            <?php echo $_SESSION["freelancerUsername"]; ?>
-                        </strong>
-
-                        <!-- COMPANY LOGGED IN -->
-                    <?php }
-                    if (isset($_SESSION["companyId"])) { ?>
-                        <strong> Welcome
-                            <?php echo $_SESSION["companyName"]; ?>
-                        </strong>
-                    <?php } ?>
                 </div>
             </div>
         </div>
@@ -43,10 +25,24 @@
                 <div class="flexMain">
                     <div class="buttonMenu">
                         <!-- BUTTON MENU -->
-                        <button class="whiteLink siteLink" onclick="menuToggle()"><i class="fas fa-bars me-2"></i>
-                            MENU</button>
+                        <button class="whiteLink siteLink" onclick="menuToggle()"><i class="fas fa-bars me-2"></i>MENU</button>
                     </div>
-                    <div class="flex3 text-center" id="siteBrand">ULTRA CONNECT</div>
+                    <div class="flex3 text-center" id="siteBrand"><!-- USER NOT LOGGED IN -->
+                        <?php if (!isset($_SESSION["freelancerId"]) && (!isset($_SESSION["companyId"]))) { ?>
+                            Welcome Guest
+                        <?php
+                        }
+                        if (isset($_SESSION["freelancerId"])) { ?>
+                            <!-- FREELANCER LOGGED IN -->
+                            Welcome
+                            <?php echo $_SESSION["freelancerUsername"]; ?>
+                            <!-- COMPANY LOGGED IN -->
+                        <?php }
+                        if (isset($_SESSION["companyId"])) { ?>
+                            Welcome
+                            <?php echo $_SESSION["companyName"]; ?>
+                        <?php } ?>
+                    </div>
 
                     <!-- USER NOT LOGGED -->
                     <?php if (!isset($_SESSION["freelancerId"]) && !isset($_SESSION["companyId"])) { ?>

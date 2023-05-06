@@ -1,6 +1,37 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron&display=swap');
+
+@font-face {
+	font-family: 'PerfectDark';
+	src: url('../Fonts/pdark.ttf') format('truetype');
+	font-weight: normal;
+	font-style: normal;
+}
+
 /* General */
 body {
 	overflow-x: hidden;
+}
+
+.textLogo {
+	font-family: 'PerfectDark';
+	font-size: large;
+	letter-spacing: 1px;
+	background: linear-gradient(270deg, #ffffff 50%, #02abff 75%, #ffffff 100%);
+	background-size: 300% 100%;
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	background-clip: text;
+	animation: GradientMovement 10s ease infinite;
+}
+
+@keyframes GradientMovement {
+	0% {
+		background-position: 100% 0%;
+	}
+
+	100% {
+		background-position: -80% 0%;
+	}
 }
 
 .noMargin {
@@ -65,39 +96,14 @@ button.siteLink {
 	color: rgb(24, 24, 24);
 }
 
-.whiteLink,
-.grayLink,
-.blackLink {
-	transition: all 300ms linear;
-}
-
 .whiteLink {
 	background: #f3f3f3;
+	transition: all 300ms linear;
 }
 
 .whiteLink:hover {
 	background: #404040;
 	color: #fff;
-}
-
-.grayLink {
-	background: #b5b5b5;
-	color: rgb(0, 0, 0);
-}
-
-.grayLink:hover {
-	color: #ffffff;
-	background: #707070;
-}
-
-.blackLink {
-	color: #fff;
-	background: #1d1d1d;
-}
-
-.blackLink:hover {
-	color: #000;
-	background: #ededed;
 }
 
 #siteBrand {
@@ -147,6 +153,7 @@ button.siteLink {
 
 /* MENU LATERAL */
 a.nav-menu-item {
+	font-family: 'Orbitron', sans-serif;
 	transition: border 200ms linear;
 	text-decoration: none;
 	display: block;
@@ -236,14 +243,15 @@ select.noStyle {
 	float: right;
 	margin-top: 6px;
 	max-width: 180px;
+	padding-top: 5px;
 }
 
 .footer-distributed .footer-right a {
 	display: inline-block;
 	width: 35px;
 	height: 35px;
-	background-color: #33383b;
-	border-radius: 2px;
+	background-color: #8f9296;
+	border-radius: 10px;
 	font-size: 20px;
 	color: #ffffff;
 	text-align: center;
@@ -285,16 +293,6 @@ select.noStyle {
 		animation-fill-mode: both;
 		-webkit-animation-fill-mode: both;
 	}
-}
-
-.generalLoginRegister {
-	display: flex;
-	flex: 3;
-	height: 70vh;
-}
-
-.generalButtons {
-	height: 5vh;
 }
 
 .menu-scroll {
@@ -385,10 +383,93 @@ select.noStyle {
 	height: 205px;
 }
 
-.acceptedBtn{
+.acceptedBtn {
 	background-color: rgb(105, 186, 118);
 }
 
-.rejectedBtn{
+.rejectedBtn {
 	background-color: rgb(198, 106, 106);
+}
+
+.textCardHref {
+	text-decoration: none;
+	color: inherit;
+	margin: 0;
+	font-size: xx-large;
+}
+
+.textCardInvis {
+	margin: 0;
+	font-size: xx-large;
+	display: none;
+	color: #F3F3F3;
+}
+
+.userCard:hover .textCardInvis {
+	display: block;
+}
+
+.userCard:hover .textCard {
+	display: none;
+}
+
+.userCard {
+	font-family: 'Orbitron', sans-serif;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border: 1px solid rgb(255, 255, 255);
+	height: 50vh;
+	background-color: #f6f6f6;
+	background-size: 100% 400%;
+	height: 35vh;
+	transition: all 1s;
+}
+
+.userCard:hover {
+	background-color: #1D1D1D;
+	border-radius: 50%;
+	transition: all 1s;
+}
+
+.textSlide {
+	font-family: 'Orbitron', sans-serif;
+	text-align: center;
+	padding: 0;
+	margin: 0;
+	margin-left: 50%;
+	transform: translateX(-200%);
+	opacity: 0;
+	animation: slide-in-anim 1s ease-out forwards;
+}
+
+.textSlide2 {
+	font-family: 'Orbitron', sans-serif;
+	text-align: center;
+	padding: 0;
+	margin: 0;
+	margin-left: 50%;
+	transform: translateX(-200%);
+	opacity: 0;
+	animation: slide-in-anim 1.5s ease-out forwards;
+}
+
+/* TEXT SLIDE ANIMATION */
+@keyframes slide-in-anim {
+	20% {
+		opacity: 0;
+	}
+
+	60% {
+		transform: translateX(-45%);
+	}
+
+	75% {
+		transform: translateX(-52%);
+	}
+
+	100% {
+		opacity: 1;
+		transform: translateX(-50%);
+	}
 }

@@ -10,9 +10,9 @@
 
 <footer class="footer-distributed mt-auto">
     <div class="footer-right">
-        <a href="#"><i class="fa fa-facebook"></i></a>
-        <a href="#"><i class="fa fa-instagram"></i></a>
-        <a href="#"><i class="fa fa-twitter"></i></a>
+        <a href="#"><img src="<?php echo route('/Imagens/whatsapp.png'); ?>" width="30" height="30"></a>
+        <a href="#"><img src="<?php echo route('/Imagens/linkedin.png'); ?>" width="30" height="30"></a>
+        <a href="#"><img src="<?php echo route('/Imagens/tiktok.png'); ?>" width="30" height="30"></a>
     </div>
     <div class="footer-left">
         <p class="footer-links">

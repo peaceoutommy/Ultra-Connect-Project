@@ -24,6 +24,7 @@
       <input type="text" name="Address" placeholder="Address..." class="form-control" required><br>
       <input type="text" name="NIF" placeholder="NIF..." class="form-control" required><br>
       <input type="password" name="Password" placeholder="Password..." class="form-control" required><br>
+      <input type="password" name="Password2" placeholder="Confirm password..." class="form-control" required><br>
       <button type="submit" name="submit" class="btn btn-secondary">Sign Up</button>
     </form>
   </div>

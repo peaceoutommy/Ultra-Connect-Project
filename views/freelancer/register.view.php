@@ -17,7 +17,20 @@
   <div class="container">
     <form action="<?php echo route('freelancerRegister'); ?>" method="post">
       <input type="hidden" name="type" value="register">
-
+      <!-- ERROR MESSAGES -->
+      <span class="text-danger"><?php if (isset($_SESSION['usernameUsed'])) echo $_SESSION['usernameUsed']; ?></span>
+      <span class="text-danger"><?php if (isset($_SESSION['emailUsed'])) echo $_SESSION['emailUsed']; ?></span>
+      <span class="text-danger"><?php if (isset($_SESSION['phoneUsed'])) echo $_SESSION['phoneUsed']; ?></span>
+      <span class="text-danger"><?php if (isset($_SESSION['NIFUsed'])) echo $_SESSION['NIFUsed']; ?></span>
+      <span class="text-danger"><?php if (isset($_SESSION['passDontMatch'])) echo $_SESSION['passDontMatch']; ?></span>
+      <!-- REMOVE ERROR MESSAGES -->
+      <?php
+      unset($_SESSION['usernameUsed']);
+      unset($_SESSION['emailUsed']);
+      unset($_SESSION['phoneUsed']);
+      unset($_SESSION['NIFUsed']);
+      unset($_SESSION['passDontMatch']);
+      ?>
       <br><input type="text" name="Name" placeholder="Full name..." class="form-control" required><br>
       <input type="text" name="Username" placeholder="Username..." class="form-control" required><br>
       <input type="text" name="Email" placeholder="Email..." class="form-control" required><br>
@@ -25,6 +38,7 @@
       <input type="text" name="Address" placeholder="Address..." class="form-control" required><br>
       <input type="text" name="NIF" placeholder="NIF..." class="form-control" required><br>
       <input type="password" name="Password" placeholder="Password..." class="form-control" required><br>
+      <input type="password" name="Password2" placeholder="Confirm password..." class="form-control" required><br>
       <button type="submit" name="submit" class="btn btn-secondary">Sign Up</button>
     </form>
   </div>

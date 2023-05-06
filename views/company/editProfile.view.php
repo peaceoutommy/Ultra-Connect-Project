@@ -15,7 +15,7 @@
 <body class="d-flex flex-column min-vh-100">
     <?php include 'views/navbar.view.php' ?>
     <div class="container">
-        <h1 class="my-4">Freelancer Profile</h1>
+        <h1 class="my-4">Company Profile</h1>
 
         <form action="<?php echo route('updateCompanyProfile'); ?>" method="POST">
             <div class="form-group">

@@ -16,4 +16,4 @@ $updatedInformation = [
 
 $queryBuilder->update('company', $_SESSION['companyId'], $updatedInformation);
 
-redirect('editCompanyProfile');
+redirect('profileCompany');
