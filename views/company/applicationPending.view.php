@@ -27,6 +27,7 @@
                         <!-- DATA COMING FROM SQL QUERY IN QUERY BUILDER FUNCTION getApplicationsByEventIdAndState -->
                         <!-- GO TO FREELANCER PROFILE -->
                         <form action="<?php echo route('seeFreelancer'); ?>" method="post" class="freelancer-link-form">
+
                             <th>Name:</th>
                             <td><button type="submit" class="btn btn-link"><?php echo $application->Freelancer_Name; ?></button></td>
                             <th>Username:</th>
@@ -36,6 +37,14 @@
                             <!-- STORE THE FREELANCER ID -->
                             <input type="hidden" name="freelancer_id" value="<?php echo $application->Id_Freelancer; ?>">
                         </form>
+                        <!-- Accept button -->
+                        <td>
+                            <form action="<?php echo route('updateApplicationState'); ?>" method="post">
+                                <input type="hidden" name="application_id" value="<?php echo $application->Id; ?>">
+                                <button type="submit" name="state" value="Accepted" class="btn btn-success">Accept</button>
+                                <button type="submit" name="state" value="Rejected" class="btn btn-danger">Reject</button>
+                            </form>
+                        </td>
                     </tr>
                 <?php endforeach; ?>
             </tbody>

@@ -20,7 +20,7 @@
         <h1 class="titlePadding">My Events</h1>
         <ul class="list-group mt-4">
             <?php foreach ($accepted_events as $event) : ?>
-                <li class="list-group-item">
+                <li class="list-group-item eventMyEvents">
                     <h3><a class="linkRedirect" href="<?php echo route('event/' . $event->Id); ?>"><?php echo $event->Name; ?></a></h3>
                     <p><?php echo $event->Description; ?></p>
                     <p><?php echo $event->Date; ?></p>

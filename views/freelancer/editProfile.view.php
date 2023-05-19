@@ -18,6 +18,20 @@
         <h1 class="my-4">Freelancer Profile</h1>
 
         <form action="<?php echo route('updateFreelancerProfile'); ?>" method="POST" enctype="multipart/form-data">
+            <!-- ERROR MESSAGES -->
+            <span class="text-danger"><?php if (isset($_SESSION['usernameUsed'])) echo $_SESSION['usernameUsed']; ?></span>
+            <span class="text-danger"><?php if (isset($_SESSION['emailUsed'])) echo $_SESSION['emailUsed']; ?></span>
+            <span class="text-danger"><?php if (isset($_SESSION['phoneUsed'])) echo $_SESSION['phoneUsed']; ?></span>
+            <span class="text-danger"><?php if (isset($_SESSION['NIFUsed'])) echo $_SESSION['NIFUsed']; ?></span>
+            <span class="text-danger"><?php if (isset($_SESSION['passDontMatch'])) echo $_SESSION['passDontMatch']; ?></span>
+            <!-- REMOVE ERROR MESSAGES -->
+            <?php
+            unset($_SESSION['usernameUsed']);
+            unset($_SESSION['emailUsed']);
+            unset($_SESSION['phoneUsed']);
+            unset($_SESSION['NIFUsed']);
+            unset($_SESSION['passDontMatch']);
+            ?>
             <div class="form-group">
                 <label for="name">Name:</label>
                 <input type="text" class="form-control" name="Name" value="<?php echo $freelancer->Name; ?>" required>
@@ -47,7 +61,7 @@
                 <label for="CV">CV:</label>
                 <input type="file" class="form-control" name="CV" accept="application/pdf">
             </div>
-            
+
             <div class="form-group">
                 <label for="NewPassword">New password:</label>
                 <input type="password" class="form-control" name="NewPassword" placeholder="***********" required>

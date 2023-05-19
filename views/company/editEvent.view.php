@@ -21,6 +21,12 @@
             <div class="form-group">
                 <input type="hidden" class="form-control" name="eventId" value="<?php echo $event->Id; ?>" required>
             </div>
+            <!-- ERROR MESSAGES -->
+            <span class="text-danger"><?php if (isset($_SESSION['eventNameUsed'])) echo $_SESSION['eventNameUsed']; ?></span>
+            <!-- REMOVE ERROR MESSAGES -->
+            <?php
+            unset($_SESSION['eventNameUsed']);
+            ?>
             <div class="form-group">
                 <label for="name">Name:</label>
                 <input type="text" class="form-control" name="Name" value="<?php echo $event->Name; ?>" required>
@@ -34,8 +40,12 @@
                 <input type="date" class="form-control" name="Date" value="<?php echo $event->Date; ?>" required>
             </div>
             <div class="form-group">
-                <label for="State">State:</label>
-                <input type="text" class="form-control" name="State" value="<?php echo $event->State; ?>" required>
+                <label for="date">State:</label>
+                <select name="State" class="form-select" aria-label="Default select example" required>
+                    <option selected><?php echo $event->State; ?></option>
+                    <option value="Confirmed">Confirmed</option>
+                    <option value="Uncertain">Uncertain</option>
+                </select>
             </div>
             <div class="form-group">
                 <label for="Spots">Spots:</label>

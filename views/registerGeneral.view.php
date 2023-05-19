@@ -27,14 +27,14 @@
             <div class="col-4">
                 <a href="<?php echo route('freelancerRegister'); ?>" class="textCardHref userCard">
                     <span class="textCard">FREELANCER</span>
-                    <span class="textCardInvis">Login</span>
+                    <span class="textCardInvis">Register</span>
                 </a>
             </div>
             <div class="col-4"></div>
             <div class="col-4">
                 <a href="<?php echo route('companyRegister'); ?>" class="textCardHref userCard">
                     <span class="textCard">COMPANY</span>
-                    <span class="textCardInvis">Login</span>
+                    <span class="textCardInvis">Register</span>
                 </a>
             </div>
         </div>

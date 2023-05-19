@@ -17,10 +17,14 @@
   <div class="container">
     <h1>Create Event</h1>
     <form method="POST" action="<?php echo route('createEvent'); ?>">
-
       <input type="hidden" name="Id_Company" value="<?php echo $_SESSION["companyId"]; ?>">
-
-      <div class="form-group">
+      <!-- ERROR MESSAGES -->
+      <span class="text-danger"><?php if (isset($_SESSION['eventNameUsed'])) echo $_SESSION['eventNameUsed']; ?></span>
+      <!-- REMOVE ERROR MESSAGES -->
+      <?php
+      unset($_SESSION['eventNameUsed']);
+      ?>
+      <div class="form-group mt-5">
         <input type="text" class="form-control" name="Name" placeholder="Insert event name..." required>
       </div><br>
       <div class="form-group">
@@ -30,10 +34,14 @@
         <input type="date" class="form-control" name="Date" placeholder="Insert event date..." required>
       </div><br>
       <div class="form-group">
-        <input type="text" class="form-control" name="State" placeholder="Insert event state..." required>
+        <select name="State" class="form-select" aria-label="Default select example" required>
+          <option selected>Select the event state...</option>
+          <option value="Confirmed">Confirmed</option>
+          <option value="Uncertain">Uncertain</option>
+        </select>
       </div><br>
       <div class="form-group">
-        <input type="text" class="form-control" name="Spots" placeholder="Insert event spots..." required>
+        <input type="number" class="form-control" name="Spots" placeholder="Insert event spots..." required>
       </div><br>
       <div class="form-group">
         <input type="text" class="form-control" name="Sector" placeholder="Insert event sector..." required>

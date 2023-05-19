@@ -10,7 +10,6 @@ $queryBuilder = new QueryBuilder($connection);
 
 $event = $queryBuilder->findById('Event', $id, 'App\Model\Event');
 $freelancer = $queryBuilder->findById('Freelancer', $id, 'App\Model\Freelancer');
-$freelancer =
 
 $event_id = $event->Id;
 

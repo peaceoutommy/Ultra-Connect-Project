@@ -26,11 +26,12 @@
                         <p><b>Sector: </b><?php echo $event->Sector ?></p>
                     </div>
                     <?php if (isset($_SESSION["companyId"])) { ?>
-                        <div class="col-6">
+                        <div class="col-6 vertAlignDiv">
                             <h3 style="visibility:hidden;">just a spacer</h3>
-                            <p><a href="<?php echo route('applicationPending/' . $event->Id); ?>">Pending Applications</a></p>
-                            <p><a href="<?php echo route('applicationAccepted/' . $event->Id); ?>">Accepted Applications</a></p>
-                            <p><a href="<?php echo route('applicationRejected/' . $event->Id); ?>">Rejected Applications</a></p>
+                            <p><a class="linkRedirect" href="<?php echo route('applicationPending/' . $event->Id); ?>">Go to Pending Applications</a></p>
+                            <p><a class="linkRedirect" href="<?php echo route('applicationAccepted/' . $event->Id); ?>">Go to Accepted Applications</a></p>
+                            <p><a class="linkRedirect" href="<?php echo route('applicationRejected/' . $event->Id); ?>">Go to Rejected Applications</a></p>
+                            <h3 style="visibility:hidden;">just a spacer</h3>
                         </div>
                     <?php } ?>
                 </div>

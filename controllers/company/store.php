@@ -6,14 +6,20 @@ use App\Database\QueryBuilder;
 $connection = Connection::make();
 $queryBuilder = new QueryBuilder($connection);
 
-$existingCompanies = $queryBuilder->getCompanyByAllFields($email, $username, $phone, $nif);
+$username = trim($_POST['Name']);
+$email = trim($_POST['Email']);
+$phone = trim($_POST['Phone']);
+$nif = trim($_POST['NIF']);
+$field = 'Company';
+
+$existingCompanies = $queryBuilder->getCompanyByAllFields($field, $email, $username, $phone, $nif);
 
 if ($existingCompanies) {
     foreach ($existingCompanies as $company) {
         if ($company->Email === $email) {
             $_SESSION['emailUsed'] = "This email is already being used.";
         }
-        if ($company->Username === $username) {
+        if ($company->Name === $username) {
             $_SESSION['companyNameUsed'] = "This company name is already being used.";
         }
         if ($company->Phone === $phone) {

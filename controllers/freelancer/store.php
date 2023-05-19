@@ -11,8 +11,9 @@ $email = trim($_POST['Email']);
 $username = trim($_POST['Username']);
 $phone = trim($_POST['Phone']);
 $nif = trim($_POST['NIF']);
+$field = 'Freelancer';
 
-$existingFreelancers = $queryBuilder->getFreelancerByAllFields($email, $username, $phone, $nif);
+$existingFreelancers = $queryBuilder->getFreelancerByAllFields($field, $email, $username, $phone, $nif);
 
 if ($existingFreelancers) {
     foreach ($existingFreelancers as $freelancer) {

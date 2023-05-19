@@ -15,7 +15,7 @@
         <div class="p-3 text-white headDiv">
             <div class="flexMain">
                 <div class="flex2 text-center">
-                    <span class="textLogo">ULTRA CONNECT</span>
+                    <span class="textLogo data-text">ULTRA CONNECT</span>
 
                 </div>
             </div>

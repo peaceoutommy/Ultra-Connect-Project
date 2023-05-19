@@ -17,7 +17,20 @@
   <div class="container">
     <form action="<?php echo route('companyRegister'); ?>" method="post">
       <input type="hidden" name="type" value="register">
-
+      <!-- ERROR MESSAGES -->
+      <span class="text-danger"><?php if (isset($_SESSION['companyNameUsed'])) echo $_SESSION['companyNameUsed']; ?></span>
+      <span class="text-danger"><?php if (isset($_SESSION['emailUsed'])) echo $_SESSION['emailUsed']; ?></span>
+      <span class="text-danger"><?php if (isset($_SESSION['phoneUsed'])) echo $_SESSION['phoneUsed']; ?></span>
+      <span class="text-danger"><?php if (isset($_SESSION['NIFUsed'])) echo $_SESSION['NIFUsed']; ?></span>
+      <span class="text-danger"><?php if (isset($_SESSION['passDontMatch'])) echo $_SESSION['passDontMatch']; ?></span>
+      <!-- REMOVE ERROR MESSAGES -->
+      <?php
+      unset($_SESSION['companyNameUsed']);
+      unset($_SESSION['emailUsed']);
+      unset($_SESSION['phoneUsed']);
+      unset($_SESSION['NIFUsed']);
+      unset($_SESSION['passDontMatch']);
+      ?>
       <br><input type="text" name="Name" placeholder="Company name..." class="form-control" required><br>
       <input type="text" name="Email" placeholder="Email..." class="form-control" required><br>
       <input type="text" name="Phone" placeholder="Phone number..." class="form-control" required><br>

@@ -18,6 +18,19 @@
         <h1 class="my-4">Company Profile</h1>
 
         <form action="<?php echo route('updateCompanyProfile'); ?>" method="POST">
+            <!-- ERROR MESSAGES -->
+            <span class="text-danger"><?php if (isset($_SESSION['companyNameUsed'])) echo $_SESSION['companyNameUsed']; ?></span>
+            <span class="text-danger"><?php if (isset($_SESSION['emailUsed'])) echo $_SESSION['emailUsed']; ?></span>
+            <span class="text-danger"><?php if (isset($_SESSION['phoneUsed'])) echo $_SESSION['phoneUsed']; ?></span>
+            <span class="text-danger"><?php if (isset($_SESSION['NIFUsed'])) echo $_SESSION['NIFUsed']; ?></span>
+            <!-- REMOVE ERROR MESSAGES -->
+            <?php
+            unset($_SESSION['companyNameUsed']);
+            unset($_SESSION['emailUsed']);
+            unset($_SESSION['phoneUsed']);
+            unset($_SESSION['NIFUsed']);
+            ?>
+
             <div class="form-group">
                 <label for="name">Name:</label>
                 <input type="text" class="form-control" name="Name" value="<?php echo $freelancer->Name; ?>" required>

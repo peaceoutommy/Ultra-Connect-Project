@@ -10,6 +10,7 @@ $queryBuilder = new QueryBuilder($connection);
 // Define the event id by saving it on the edit.event.view form
 $id = $_POST['eventId'];
 
+$queryBuilder->deleteApplicationsByEventId($id);
 $queryBuilder->deleteById('Event', $id);
 
-redirect('manageApplications');
+redirect('listEvents');
